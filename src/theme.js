@@ -1,12 +1,16 @@
 import themes from "./themes";
 
 export default class Theme {
-    constructor(themeName) {
+    constructor(theme) {
 
-        var theme = themes[themeName];
-        if(theme === undefined) {
+        if(typeof theme == "string") 
+        {
+            theme = themes[themeName];
+            if(!theme){
+                
             console.error(`There is no theme preset with the name '${themeName}'! Defaulting to dark theme.`);
             theme = themes.dark;
+            }
         }
 
         // Merge the base theme with the theme parameters and make
